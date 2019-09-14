@@ -88,7 +88,7 @@ def get_html(paths_to_imgs, pred_masks, path_to_save="results/test"):
     pred_masks = pred_masks[order]
 
     for path_to_img, pred_mask in zip(paths_to_imgs, pred_masks):
-        img_id = path_to_img.split("/")[-1].split(".")[0]
+        img_id = os.path.split(path_to_img)[-1].split(".")[0]
         img = np.array(Image.open(path_to_img))
         Image.fromarray(img).save(f"{path_to_save}/{img_id}_img.jpg")
         Image.fromarray(pred_mask).save(f"{path_to_save}/{img_id}_pred_mask.png")
