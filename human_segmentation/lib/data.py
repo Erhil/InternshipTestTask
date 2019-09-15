@@ -46,6 +46,8 @@ class Dataset(data.Dataset):
         if self.mask_path is not None:
             mask = plt.imread(self.mask_paths[i])
             mask = cv2.resize(mask, self.size)
+            mask = mask[np.newaxis, :, :]
+            mask = mask.astype(np.uint8)
         
         # apply preprocessing if needed
         if self.preprocessing:
@@ -62,7 +64,7 @@ class Dataset(data.Dataset):
         
         # translate mask to PyTorch format
         if self.mask_path is not None:
-            mask = mask[np.newaxis, :, :].astype(np.float32)
+            mask = mask.astype(np.float32)
             
         if self.mask_path is not None:
             return img, mask
@@ -72,7 +74,7 @@ class Dataset(data.Dataset):
         return len(self.img_paths)
 
 def load_augmentations(flip=0.5, blur=0.2, crop=0.5,
-                        contrast=0.3, elstic=0.2,
+                        contrast=0.3, elastic=0.2,
                         affine=0.5):
     """
     Loads and configures data augmenter object

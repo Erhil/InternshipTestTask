@@ -5,7 +5,7 @@ import segmentation_models_pytorch as smp
 import pydensecrf.densecrf as dcrf
 import torch
 
-import unet
+from lib import unet
 
 def load_model(name, pretrained=False):
     '''
@@ -72,7 +72,7 @@ class CRFModel:
         mask = self.base(tensor)
         mask = self.__mask_to_numpy(mask)
         if no_crf:
-            return mask
+            return (mask>0.5).astype(np.uint8)
         # Apply DenseCRF
         mask = self.__dense_crf(image, mask)
         return mask
