@@ -1,10 +1,16 @@
 import os
 import numpy as np
 
-from glob import glob
+from glob import glob as _glob
 from PIL import Image
 from datetime import datetime
 
+
+# Fix for Windows
+def glob(pathname, recursive=False):
+    paths = _glob(pathname, recursive=False)
+    paths = [x.replace("\\", "/") for x in paths]
+    return paths
 
 def generate_html(path_to_data):
     """Generates content of html file and saves it.
