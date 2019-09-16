@@ -3,3 +3,4 @@
 * ***[ Отчет ](https://github.com/Erhil/InternshipTestTask/blob/master/human_segmentation/notebooks/Report.ipynb)***
 * [ Обзор статей ](https://github.com/Erhil/InternshipTestTask/blob/master/human_segmentation/notebooks/Articles.ipynb)
 * [ Обучение моделей ](https://github.com/Erhil/InternshipTestTask/blob/master/human_segmentation/notebooks/models.ipynb)
+* [ Html c результатами на тестовой выборке ](https://github.com/Erhil/InternshipTestTask/blob/master/human_segmentation/results/example.html)
